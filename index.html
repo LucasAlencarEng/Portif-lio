@@ -11,10 +11,24 @@
         body { font-family: 'Inter', sans-serif; }
         .gradient-text {
             background: linear-gradient(to right, #2563eb, #14b8a6);
-            /* Corrigindo a inconsistência do VS Code: */
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .image-blob {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        .floating-delayed {
+            animation: float 4s ease-in-out infinite;
+            animation-delay: 2s;
         }
     </style>
 </head>
@@ -52,28 +66,73 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <header id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
         <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-teal-100 rounded-full blur-3xl opacity-50"></div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-100 uppercase tracking-wide">
-                    Engenharia Civil & Análise de Dados
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <!-- Texto -->
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <div class="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-100 uppercase tracking-wide">
+                        Engenharia Civil & Análise de Dados
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Transformando <span class="gradient-text">Dados de Obras</span> em Decisões Estratégicas
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                        Engenheiro Civil especialista em Business Intelligence. Combino a precisão técnica da engenharia com o poder analítico dos dados para otimizar o setor da construção.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contato" class="flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20 transform hover:-translate-y-1">
+                            <i data-lucide="mail"></i> Entrar em Contato
+                        </a>
+                        <a href="#experiencia" class="flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all transform hover:-translate-y-1">
+                            Ver Experiência <i data-lucide="chevron-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
-                    Transformando <span class="gradient-text">Dados de Obras</span> em Decisões Estratégicas
-                </h1>
-                <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Engenheiro Civil especialista em Business Intelligence. Combino a precisão técnica da engenharia com o poder analítico dos dados para otimizar o setor da construção.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contato" class="flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20 transform hover:-translate-y-1">
-                        <i data-lucide="mail"></i> Entrar em Contato
-                    </a>
-                    <a href="#experiencia" class="flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all transform hover:-translate-y-1">
-                        Ver Experiência <i data-lucide="chevron-right"></i>
-                    </a>
+
+                <!-- Imagem Moderna -->
+                <div class="lg:w-1/2 relative flex justify-center items-center">
+                    <div class="relative w-full max-w-lg">
+                        <!-- Círculos de fundo decorativos -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+                        
+                        <div class="relative">
+                            <!-- Moldura Principal -->
+                            <div class="relative z-10 overflow-hidden rounded-[2.5rem] shadow-2xl border-8 border-white bg-slate-200 aspect-[4/5] group transition-transform duration-500 hover:scale-[1.02]">
+                                <img 
+                                    src="https://late-plum-mskv9qm43u.edgeone.app/Gemini_Generated_Image_yr6ussyr6ussyr6u.png" 
+                                    alt="Lucas Alencar" 
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                >
+                                <!-- Overlay sutil -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+
+                            <!-- Cartões Flutuantes (Badges de Especialidade) -->
+                            <div class="absolute -right-4 top-10 z-20 floating bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                                    <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-bold uppercase">Especialista</p>
+                                    <p class="text-sm font-extrabold text-slate-800">Power BI & SQL</p>
+                                </div>
+                            </div>
+
+                            <div class="absolute -left-8 bottom-20 z-20 floating-delayed bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                                <div class="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center text-white">
+                                    <i data-lucide="hard-hat" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-bold uppercase">Engenharia</p>
+                                    <p class="text-sm font-extrabold text-slate-800">Gestão & Obras</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -148,21 +207,21 @@
                                 <span class="font-semibold text-slate-700">Power BI</span>
                                 <span class="text-blue-600 font-bold">95%</span>
                             </div>
-                            <div class="h-3 bg-slate-100 rounded-full"><div class="h-full bg-blue-600 rounded-full w-[95%]"></div></div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 rounded-full w-[95%]"></div></div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
                                 <span class="font-semibold text-slate-700">SQL</span>
                                 <span class="text-blue-600 font-bold">90%</span>
                             </div>
-                            <div class="h-3 bg-slate-100 rounded-full"><div class="h-full bg-blue-600 rounded-full w-[90%]"></div></div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 rounded-full w-[90%]"></div></div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
                                 <span class="font-semibold text-slate-700">Visualização de Dados</span>
                                 <span class="text-blue-600 font-bold">90%</span>
                             </div>
-                            <div class="h-3 bg-slate-100 rounded-full"><div class="h-full bg-blue-600 rounded-full w-[90%]"></div></div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 rounded-full w-[90%]"></div></div>
                         </div>
                     </div>
                 </div>
@@ -180,21 +239,21 @@
                                 <span class="font-semibold text-slate-700">Planejamento e Gestão</span>
                                 <span class="text-teal-600 font-bold">95%</span>
                             </div>
-                            <div class="h-3 bg-slate-100 rounded-full"><div class="h-full bg-teal-500 rounded-full w-[95%]"></div></div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full w-[95%]"></div></div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
                                 <span class="font-semibold text-slate-700">Licitações Públicas</span>
                                 <span class="text-teal-600 font-bold">90%</span>
                             </div>
-                            <div class="h-3 bg-slate-100 rounded-full"><div class="h-full bg-teal-500 rounded-full w-[90%]"></div></div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full w-[90%]"></div></div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
                                 <span class="font-semibold text-slate-700">Orçamentos</span>
                                 <span class="text-teal-600 font-bold">92%</span>
                             </div>
-                            <div class="h-3 bg-slate-100 rounded-full"><div class="h-full bg-teal-500 rounded-full w-[92%]"></div></div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full w-[92%]"></div></div>
                         </div>
                     </div>
                 </div>
@@ -319,4 +378,3 @@
 </body>
 
 </html>
-
