@@ -30,6 +30,10 @@
             animation: float 4s ease-in-out infinite;
             animation-delay: 2s;
         }
+        /* Classe para esconder elementos baseado no idioma */
+        .lang-hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -43,11 +47,11 @@
             </div>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="#home" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Home</a>
-                <a href="#sobre" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Sobre</a>
-                <a href="#habilidades" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Habilidades</a>
-                <a href="#experiencia" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Experiência</a>
-                <a href="#contato" class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20">Contato</a>
+                <a href="#home" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_home">Home</a>
+                <a href="#sobre" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_about">Sobre</a>
+                <a href="#habilidades" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_skills">Habilidades</a>
+                <a href="#experiencia" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_experience">Experiência</a>
+                <a href="#contato" class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20" data-i18n="nav_contact">Contato</a>
             </div>
 
             <button class="md:hidden text-slate-700" onclick="toggleMenu()">
@@ -57,13 +61,20 @@
 
         <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 py-4 px-6 flex flex-col gap-4">
-            <a href="#home" class="text-slate-600 font-medium py-2" onclick="toggleMenu()">Home</a>
-            <a href="#sobre" class="text-slate-600 font-medium py-2" onclick="toggleMenu()">Sobre</a>
-            <a href="#habilidades" class="text-slate-600 font-medium py-2" onclick="toggleMenu()">Habilidades</a>
-            <a href="#experiencia" class="text-slate-600 font-medium py-2" onclick="toggleMenu()">Experiência</a>
-            <a href="#contato" class="text-blue-600 font-bold py-2" onclick="toggleMenu()">Contato</a>
+            <a href="#home" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_home">Home</a>
+            <a href="#sobre" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_about">Sobre</a>
+            <a href="#habilidades" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_skills">Habilidades</a>
+            <a href="#experiencia" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_experience">Experiência</a>
+            <a href="#contato" class="text-blue-600 font-bold py-2" onclick="toggleMenu()" data-i18n="nav_contact">Contato</a>
         </div>
     </nav>
+
+    <!-- Botão de Idioma Flutuante -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="lang-toggle" onclick="toggleLanguage()" class="bg-white border border-slate-200 shadow-xl p-3 rounded-full hover:scale-110 transition-transform duration-300 flex items-center justify-center w-14 h-14 text-2xl" title="Mudar Idioma / Change Language">
+            <span id="flag-icon">🇺🇸</span>
+        </button>
+    </div>
 
     <!-- Hero Section -->
     <header id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
@@ -74,41 +85,43 @@
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                 <!-- Texto -->
                 <div class="lg:w-1/2 text-center lg:text-left">
-                    <div class="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-100 uppercase tracking-wide">
+                    <div class="inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-100 uppercase tracking-wide" data-i18n="hero_badge">
                         Engenharia Civil & Análise de Dados
                     </div>
                     <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight">
-                        Transformando <span class="gradient-text">Dados de Obras</span> em Decisões Estratégicas
+                        <span data-i18n="hero_title_start">Transformando</span> <span class="gradient-text" data-i18n="hero_title_highlight">Dados de Obras</span> <span data-i18n="hero_title_end">em Decisões Estratégicas</span>
                     </h1>
-                    <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                    <p class="text-xl text-slate-600 mb-10 leading-relaxed" data-i18n="hero_desc">
                         Engenheiro Civil especialista em Business Intelligence. Combino a precisão técnica da engenharia com o poder analítico dos dados para otimizar o setor da construção.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="#contato" class="flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/20 transform hover:-translate-y-1">
-                            <i data-lucide="mail"></i> Entrar em Contato
+                            <i data-lucide="mail"></i> <span data-i18n="btn_contact">Entrar em Contato</span>
                         </a>
                         <a href="#experiencia" class="flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all transform hover:-translate-y-1">
-                            Ver Experiência <i data-lucide="chevron-right"></i>
+                            <span data-i18n="btn_experience">Ver Experiência</span> <i data-lucide="chevron-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Imagem Moderna -->
                 <div class="lg:w-1/2 relative flex justify-center items-center">
-                    <div class="relative w-full max-w-lg">
+                    <div class="relative w-full max-w-xl">
                         <!-- Círculos de fundo decorativos -->
                         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
                         
                         <div class="relative">
                             <!-- Moldura Principal -->
-                            <div class="relative z-10 overflow-hidden rounded-[2.5rem] shadow-2xl border-8 border-white bg-slate-200 aspect-[4/5] group transition-transform duration-500 hover:scale-[1.02]">
-                                <img 
-                                    src="https://late-plum-mskv9qm43u.edgeone.app/Gemini_Generated_Image_yr6ussyr6ussyr6u.png" 
-                                    alt="Lucas Alencar" 
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                >
+                            <div class="relative z-10 overflow-hidden rounded-[2.5rem] shadow-2xl border-8 border-white bg-slate-200 aspect-[3/4] group transition-transform duration-500 hover:scale-[1.02]">
+                                <a href="https://ibb.co/ZRsGhyz4" target="_blank" class="block w-full h-full cursor-pointer">
+                                    <img 
+                                        src="https://i.ibb.co/FkvmBG4Z/Whats-App-Image-2026-02-12-at-14-59-17.jpg" 
+                                        alt="Lucas Alencar - Engenheiro Civil e Analista de Dados" 
+                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    >
+                                </a>
                                 <!-- Overlay sutil -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             </div>
 
                             <!-- Cartões Flutuantes (Badges de Especialidade) -->
@@ -117,7 +130,7 @@
                                     <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-slate-500 font-bold uppercase">Especialista</p>
+                                    <p class="text-xs text-slate-500 font-bold uppercase" data-i18n="badge_specialist">Especialista</p>
                                     <p class="text-sm font-extrabold text-slate-800">Power BI & SQL</p>
                                 </div>
                             </div>
@@ -127,8 +140,8 @@
                                     <i data-lucide="hard-hat" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-slate-500 font-bold uppercase">Engenharia</p>
-                                    <p class="text-sm font-extrabold text-slate-800">Gestão & Obras</p>
+                                    <p class="text-xs text-slate-500 font-bold uppercase" data-i18n="badge_eng">Engenharia</p>
+                                    <p class="text-sm font-extrabold text-slate-800" data-i18n="badge_mgmt">Gestão & Obras</p>
                                 </div>
                             </div>
                         </div>
@@ -150,29 +163,29 @@
                                 <i data-lucide="database" class="text-blue-400"></i>
                                 Data Driven Engineering
                             </h3>
-                            <p class="text-slate-300 leading-relaxed mb-8 italic">
+                            <p class="text-slate-300 leading-relaxed mb-8 italic" data-i18n="about_quote">
                                 "Minha jornada começou nos canteiros de obras e evoluiu para os dashboards. Percebi que o maior ativo de uma construção é a informação gerada por ela."
                             </p>
                             <div class="flex gap-8 pt-6 border-t border-slate-700">
                                 <div>
                                     <span class="block text-3xl font-bold text-blue-400">7+</span>
-                                    <span class="text-xs text-slate-400 uppercase tracking-wider">Anos de Exp.</span>
+                                    <span class="text-xs text-slate-400 uppercase tracking-wider" data-i18n="stat_exp">Anos de Exp.</span>
                                 </div>
                                 <div class="w-px bg-slate-700"></div>
                                 <div>
                                     <span class="block text-3xl font-bold text-teal-400">BI</span>
-                                    <span class="text-xs text-slate-400 uppercase tracking-wider">Especialista</span>
+                                    <span class="text-xs text-slate-400 uppercase tracking-wider" data-i18n="stat_spec">Especialista</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2">
-                    <h2 class="text-4xl font-bold text-slate-900 mb-8">Sobre Mim</h2>
-                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
+                    <h2 class="text-4xl font-bold text-slate-900 mb-8" data-i18n="about_title">Sobre Mim</h2>
+                    <p class="text-slate-600 mb-6 text-lg leading-relaxed" data-i18n="about_p1">
                         Engenheiro Civil com sólida experiência em gestão de obras e processos administrativos. Atualmente, atuo como Analista de Dados na CEHAB, unindo minha vivência em campo à análise estratégica.
                     </p>
-                    <p class="text-slate-600 mb-8 text-lg leading-relaxed">
+                    <p class="text-slate-600 mb-8 text-lg leading-relaxed" data-i18n="about_p2">
                         Especialista em transformar dados complexos de licitações e orçamentos em dashboards intuitivos no Power BI, gerando insights que economizam tempo e recursos na gestão pública e privada.
                     </p>
                     <div class="flex gap-4">
@@ -189,19 +202,20 @@
     <section id="habilidades" class="py-24 bg-slate-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-slate-900 mb-4">Competências Técnicas</h2>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4" data-i18n="skills_title">Competências Técnicas</h2>
                 <div class="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
-                    <div class="flex items-center gap-4 mb-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Card 1: Dados & BI -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-8">
                         <div class="p-3 bg-blue-100 text-blue-600 rounded-2xl">
                             <i data-lucide="bar-chart-3"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900">Dados & BI</h3>
+                        <h3 class="text-2xl font-bold text-slate-900" data-i18n="skill_bi_title">Dados & BI</h3>
                     </div>
-                    <div class="space-y-8">
+                    <div class="space-y-6 flex-grow">
                         <div>
                             <div class="flex justify-between mb-2">
                                 <span class="font-semibold text-slate-700">Power BI</span>
@@ -218,7 +232,7 @@
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-semibold text-slate-700">Visualização de Dados</span>
+                                <span class="font-semibold text-slate-700" data-i18n="skill_viz">Visualização de Dados</span>
                                 <span class="text-blue-600 font-bold">90%</span>
                             </div>
                             <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 rounded-full w-[90%]"></div></div>
@@ -226,37 +240,72 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
-                    <div class="flex items-center gap-4 mb-10">
+                <!-- Card 2: Engenharia -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-8">
                         <div class="p-3 bg-teal-100 text-teal-600 rounded-2xl">
                             <i data-lucide="building-2"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900">Engenharia</h3>
+                        <h3 class="text-2xl font-bold text-slate-900" data-i18n="skill_eng_title">Engenharia</h3>
                     </div>
-                    <div class="space-y-8">
+                    <div class="space-y-6 flex-grow">
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-semibold text-slate-700">Planejamento e Gestão</span>
+                                <span class="font-semibold text-slate-700" data-i18n="skill_plan">Planejamento e Gestão</span>
                                 <span class="text-teal-600 font-bold">95%</span>
                             </div>
                             <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full w-[95%]"></div></div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-semibold text-slate-700">Licitações Públicas</span>
+                                <span class="font-semibold text-slate-700" data-i18n="skill_bids">Licitações Públicas</span>
                                 <span class="text-teal-600 font-bold">90%</span>
                             </div>
                             <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full w-[90%]"></div></div>
                         </div>
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span class="font-semibold text-slate-700">Orçamentos</span>
+                                <span class="font-semibold text-slate-700" data-i18n="skill_budget">Orçamentos</span>
                                 <span class="text-teal-600 font-bold">92%</span>
                             </div>
                             <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full w-[92%]"></div></div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 3: Comunicação e Estratégia -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col h-full">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-amber-100 text-amber-600 rounded-2xl">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900" data-i18n="skill_comm_title">Comunicação e Estratégia</h3>
+                    </div>
+                    <div class="space-y-6 flex-grow">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-slate-700" data-i18n="skill_leadership">Liderança de Equipes</span>
+                                <span class="text-amber-600 font-bold">90%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-500 rounded-full w-[90%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-slate-700" data-i18n="skill_storytelling">Storytelling com Dados</span>
+                                <span class="text-amber-600 font-bold">95%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-500 rounded-full w-[95%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold text-slate-700" data-i18n="skill_english">Inglês Intermediário</span>
+                                <span class="text-amber-600 font-bold">75%</span>
+                            </div>
+                            <div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-amber-500 rounded-full w-[75%]"></div></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -264,21 +313,21 @@
     <!-- Trajetória Profissional -->
     <section id="experiencia" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-slate-900 mb-16 text-center">Trajetória Profissional</h2>
+            <h2 class="text-4xl font-bold text-slate-900 mb-16 text-center" data-i18n="exp_title">Trajetória Profissional</h2>
             
             <div class="max-w-4xl mx-auto space-y-12">
                 <!-- CEHAB -->
                 <div class="flex flex-col md:flex-row gap-6 md:gap-12 relative">
                     <div class="md:w-1/4">
-                        <div class="text-blue-600 font-bold text-lg">Maio 2025 - Presente</div>
+                        <div class="text-blue-600 font-bold text-lg" data-i18n="exp_date_cehab">Maio 2025 - Presente</div>
                         <div class="text-slate-400 text-sm">Recife, PE</div>
                     </div>
                     <div class="md:w-3/4 pb-12 border-l-2 border-slate-100 pl-8 relative">
                         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-600 border-4 border-white"></div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Engenheiro Civil / Analista de Dados</h3>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="exp_role_cehab">Engenheiro Civil / Analista de Dados</h3>
                         <h4 class="text-blue-600 font-medium mb-4">CEHAB - Companhia Estadual de Habitação e Obras</h4>
-                        <p class="text-slate-600 leading-relaxed">
-                            Monitoramento de performance em projetos e contratos da Saúde através de Business Intelligence. Suporte estratégico analítico para otimização de orçamentos e licitações.
+                        <p class="text-slate-600 leading-relaxed" data-i18n="exp_desc_cehab">
+                            Responsável pela análise de dados e monitoramento de performance de contratos e projetos da Saúde. Desenvolvimento de soluções de Business Intelligence para otimizar o controle de processos e orçamentos, garantindo eficiência e transparência na gestão pública.
                         </p>
                     </div>
                 </div>
@@ -286,15 +335,15 @@
                 <!-- Arbitrium -->
                 <div class="flex flex-col md:flex-row gap-6 md:gap-12 relative">
                     <div class="md:w-1/4">
-                        <div class="text-slate-500 font-bold text-lg">Julho 2021 - Maio 2025</div>
+                        <div class="text-slate-500 font-bold text-lg" data-i18n="exp_date_arbitrium">Julho 2021 - Maio 2025</div>
                         <div class="text-slate-400 text-sm">Pernambuco</div>
                     </div>
                     <div class="md:w-3/4 pb-12 border-l-2 border-slate-100 pl-8 relative">
                         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Engenheiro Civil | Gerente Administrativo</h3>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="exp_role_arbitrium">Engenheiro Civil | Gerente Administrativo</h3>
                         <h4 class="text-slate-600 font-medium mb-4">Arbitrium Engenharia</h4>
-                        <p class="text-slate-600 leading-relaxed">
-                            Gestão financeira e administrativa. Implantação de BI com Power BI e SQL para monitoramento de indicadores operacionais e estratégicos.
+                        <p class="text-slate-600 leading-relaxed" data-i18n="exp_desc_arbitrium">
+                            Gestão administrativa, financeira e de equipes. Liderança na implantação de Power BI e SQL para transformar dados operacionais em indicadores estratégicos, otimizando o monitoramento de processos e impulsionando a tomada de decisão baseada em dados.
                         </p>
                     </div>
                 </div>
@@ -302,22 +351,16 @@
                 <!-- Bezerra Engenharia -->
                 <div class="flex flex-col md:flex-row gap-6 md:gap-12 relative">
                     <div class="md:w-1/4">
-                        <div class="text-slate-500 font-bold text-lg">Out 2017 - Nov 2019</div>
+                        <div class="text-slate-500 font-bold text-lg" data-i18n="exp_date_bezerra">Out 2017 - Nov 2019</div>
                         <div class="text-slate-400 text-sm">Caruaru, PE</div>
                     </div>
                     <div class="md:w-3/4 pb-12 border-l-2 border-slate-100 pl-8 relative">
                         <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Desenhista Técnico de Eng. Civil</h3>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="exp_role_bezerra">Desenhista Técnico de Eng. Civil</h3>
                         <h4 class="text-slate-600 font-medium mb-4">Bezerra Engenharia</h4>
-                        <ul class="text-slate-600 space-y-3 text-sm leading-relaxed">
-                            <li>• <strong>Gestão de Escopo:</strong> Realização de modificações necessárias para manutenção do cronograma físico do projeto.</li>
-                            <li>• <strong>Projetos:</strong> Elaboração de projeto arquitetônico completo, incluindo planta de situação, coberta, planta baixa, fachadas e harmonização.</li>
-                            <li>• <strong>Liderança:</strong> Orientação técnica e supervisão de estagiários de Arquitetura e Engenharia Civil.</li>
-                            <li>• <strong>Processos Públicos:</strong> Acompanhamento junto à SEURB Caruaru para obtenção de Certidões de Viabilidade, Licenças de Construção, Habite-se e licenciamento ambiental (LP, LI, LO).</li>
-                            <li>• <strong>Legalização:</strong> Gestão de processos de desmembramento, remembramento, retificação de documentos e solicitações junto à Celpe e Compesa.</li>
-                            <li>• <strong>Responsabilidade Técnica:</strong> Elaboração de ART e RRT conforme as atividades técnicas requeridas.</li>
-                            <li>• <strong>Operacional:</strong> Controle de qualidade do ambiente de trabalho, manuseio de plotters e controle de caixa administrativo.</li>
-                        </ul>
+                        <p class="text-slate-600 leading-relaxed" data-i18n="exp_desc_bezerra">
+                            Elaboração de projetos arquitetônicos completos e gestão de escopo para manutenção de cronogramas. Liderança de estagiários e acompanhamento integral de processos licitatórios e legalização de obras junto aos órgãos competentes (SEURB, Celpe, Compesa).
+                        </p>
                     </div>
                 </div>
             </div>
@@ -327,8 +370,8 @@
     <!-- Contato -->
     <footer id="contato" class="bg-slate-900 text-white py-24">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6">Vamos Construir Algo Juntos?</h2>
-            <p class="text-slate-400 mb-12 text-lg max-w-xl mx-auto">
+            <h2 class="text-4xl font-bold mb-6" data-i18n="footer_title">Vamos Construir Algo Juntos?</h2>
+            <p class="text-slate-400 mb-12 text-lg max-w-xl mx-auto" data-i18n="footer_desc">
                 Interessado em otimizar processos através de dados ou precisa de gestão técnica especializada?
             </p>
 
@@ -374,6 +417,118 @@
         });
 
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Traduções
+        const i18n = {
+            pt: {
+                nav_home: "Home",
+                nav_about: "Sobre",
+                nav_skills: "Habilidades",
+                nav_experience: "Experiência",
+                nav_contact: "Contato",
+                hero_badge: "Engenharia Civil & Análise de Dados",
+                hero_title_start: "Transformando",
+                hero_title_highlight: "Dados de Obras",
+                hero_title_end: "em Decisões Estratégicas",
+                hero_desc: "Engenheiro Civil especialista em Business Intelligence. Combino a precisão técnica da engenharia com o poder analítico dos dados para otimizar o setor da construção.",
+                btn_contact: "Entrar em Contato",
+                btn_experience: "Ver Experiência",
+                badge_specialist: "Especialista",
+                badge_eng: "Engenharia",
+                badge_mgmt: "Gestão & Obras",
+                about_quote: "\"Minha jornada começou nos canteiros de obras e evoluiu para os dashboards. Percebi que o maior ativo de uma construção é a informação gerada por ela.\"",
+                stat_exp: "Anos de Exp.",
+                stat_spec: "Especialista",
+                about_title: "Sobre Mim",
+                about_p1: "Engenheiro Civil com sólida experiência em gestão de obras e processos administrativos. Atualmente, atuo como Analista de Dados na CEHAB, unindo minha vivência em campo à análise estratégica.",
+                about_p2: "Especialista em transformar dados complexos de licitações e orçamentos em dashboards intuitivos no Power BI, gerando insights que economizam tempo e recursos na gestão pública e privada.",
+                skills_title: "Competências Técnicas",
+                skill_bi_title: "Dados & BI",
+                skill_viz: "Visualização de Dados",
+                skill_eng_title: "Engenharia",
+                skill_plan: "Planejamento e Gestão",
+                skill_bids: "Licitações Públicas",
+                skill_budget: "Orçamentos",
+                skill_comm_title: "Comunicação e Estratégia",
+                skill_leadership: "Liderança de Equipes",
+                skill_storytelling: "Storytelling com Dados",
+                skill_english: "Inglês Intermediário",
+                exp_title: "Trajetória Profissional",
+                exp_date_cehab: "Maio 2025 - Presente",
+                exp_role_cehab: "Engenheiro Civil / Analista de Dados",
+                exp_desc_cehab: "Responsável pela análise de dados e monitoramento de performance de contratos e projetos da Saúde. Desenvolvimento de soluções de Business Intelligence para otimizar o controle de processos e orçamentos, garantindo eficiência e transparência na gestão pública.",
+                exp_date_arbitrium: "Julho 2021 - Maio 2025",
+                exp_role_arbitrium: "Engenheiro Civil | Gerente Administrativo",
+                exp_desc_arbitrium: "Gestão administrativa, financeira e de equipes. Liderança na implantação de Power BI e SQL para transformar dados operacionais em indicadores estratégicos, otimizando o monitoramento de processos e impulsionando a tomada de decisão baseada em dados.",
+                exp_date_bezerra: "Out 2017 - Nov 2019",
+                exp_role_bezerra: "Desenhista Técnico de Eng. Civil",
+                exp_desc_bezerra: "Elaboração de projetos arquitetônicos completos e gestão de escopo para manutenção de cronogramas. Liderança de estagiários e acompanhamento integral de processos licitatórios e legalização de obras junto aos órgãos competentes (SEURB, Celpe, Compesa).",
+                footer_title: "Vamos Construir Algo Juntos?",
+                footer_desc: "Interessado em otimizar processos através de dados ou precisa de gestão técnica especializada?"
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_skills: "Skills",
+                nav_experience: "Experience",
+                nav_contact: "Contact",
+                hero_badge: "Civil Engineering & Data Analysis",
+                hero_title_start: "Transforming",
+                hero_title_highlight: "Construction Data",
+                hero_title_end: "into Strategic Decisions",
+                hero_desc: "Civil Engineer specializing in Business Intelligence. I combine technical engineering precision with data analytics power to optimize the construction sector.",
+                btn_contact: "Get in Touch",
+                btn_experience: "View Experience",
+                badge_specialist: "Specialist",
+                badge_eng: "Engineering",
+                badge_mgmt: "Mgmt & Works",
+                about_quote: "\"My journey began at construction sites and evolved into dashboards. I realized the greatest asset of construction is the information generated by it.\"",
+                stat_exp: "Years Exp.",
+                stat_spec: "Specialist",
+                about_title: "About Me",
+                about_p1: "Civil Engineer with solid experience in construction management and administrative processes. Currently working as a Data Analyst at CEHAB, merging field experience with strategic analysis.",
+                about_p2: "Specialist in transforming complex bidding and budget data into intuitive Power BI dashboards, generating insights that save time and resources in both public and private sectors.",
+                skills_title: "Technical Skills",
+                skill_bi_title: "Data & BI",
+                skill_viz: "Data Visualization",
+                skill_eng_title: "Engineering",
+                skill_plan: "Planning & Management",
+                skill_bids: "Public Bidding",
+                skill_budget: "Budgeting",
+                skill_comm_title: "Communication & Strategy",
+                skill_leadership: "Team Leadership",
+                skill_storytelling: "Data Storytelling",
+                skill_english: "Intermediate English",
+                exp_title: "Professional Trajectory",
+                exp_date_cehab: "May 2025 - Present",
+                exp_role_cehab: "Civil Engineer / Data Analyst",
+                exp_desc_cehab: "Responsible for data analysis and performance monitoring of Health contracts and projects. Developing Business Intelligence solutions to optimize process control and budgets, ensuring efficiency and transparency in public management.",
+                exp_date_arbitrium: "July 2021 - May 2025",
+                exp_role_arbitrium: "Civil Engineer | Administrative Manager",
+                exp_desc_arbitrium: "Administrative, financial, and team management. Leading the implementation of Power BI and SQL to transform operational data into strategic indicators, optimizing process monitoring and driving data-driven decision-making.",
+                exp_date_bezerra: "Oct 2017 - Nov 2019",
+                exp_role_bezerra: "Civil Eng. Technical Draftsman",
+                exp_desc_bezerra: "Drafting complete architectural projects and scope management to maintain schedules. Leading interns and fully monitoring bidding processes and construction legalization with competent bodies (SEURB, Celpe, Compesa).",
+                footer_title: "Let's Build Something Together?",
+                footer_desc: "Interested in optimizing processes through data or need specialized technical management?"
+            }
+        };
+
+        let currentLang = 'pt';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            const flag = document.getElementById('flag-icon');
+            flag.textContent = currentLang === 'pt' ? '🇺🇸' : '🇧🇷'; // Mostra a bandeira do "próximo" idioma
+
+            // Atualiza todos os elementos com atributo data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    el.innerText = i18n[currentLang][key];
+                }
+            });
+        }
     </script>
 </body>
 
