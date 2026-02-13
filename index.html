@@ -30,9 +30,17 @@
             animation: float 4s ease-in-out infinite;
             animation-delay: 2s;
         }
-        /* Classe para esconder elementos baseado no idioma */
-        .lang-hidden {
-            display: none !important;
+        /* Estilos para o Slider */
+        .slider-container {
+            scroll-snap-type: x mandatory;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+        .slide {
+            scroll-snap-align: center;
         }
     </style>
 </head>
@@ -51,6 +59,7 @@
                 <a href="#sobre" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_about">Sobre</a>
                 <a href="#habilidades" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_skills">Habilidades</a>
                 <a href="#experiencia" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_experience">Experiência</a>
+                <a href="#entregas" class="text-slate-600 hover:text-blue-600 font-medium transition-colors" data-i18n="nav_deliveries">Entregas</a>
                 <a href="#contato" class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20" data-i18n="nav_contact">Contato</a>
             </div>
 
@@ -65,6 +74,7 @@
             <a href="#sobre" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_about">Sobre</a>
             <a href="#habilidades" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_skills">Habilidades</a>
             <a href="#experiencia" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_experience">Experiência</a>
+            <a href="#entregas" class="text-slate-600 font-medium py-2" onclick="toggleMenu()" data-i18n="nav_deliveries">Entregas</a>
             <a href="#contato" class="text-blue-600 font-bold py-2" onclick="toggleMenu()" data-i18n="nav_contact">Contato</a>
         </div>
     </nav>
@@ -367,6 +377,82 @@
         </div>
     </section>
 
+    <!-- Entregas Section (Nova Aba) -->
+    <section id="entregas" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4" data-i18n="deliveries_title">Galeria de Entregas</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto" data-i18n="deliveries_desc">Confira alguns dos dashboards e relatórios desenvolvidos para otimização de gestão.</p>
+                <div class="h-1.5 w-20 bg-blue-600 mx-auto rounded-full mt-6"></div>
+            </div>
+
+            <!-- Galeria / Slider -->
+            <div class="max-w-5xl mx-auto relative group">
+                <!-- Container das imagens -->
+                <div id="slider" class="slider-container flex overflow-x-auto gap-4 snap-x snap-mandatory rounded-2xl shadow-2xl bg-white p-2">
+                    
+                    <!-- Slide 1 -->
+                    <div class="slide min-w-full flex-shrink-0 relative rounded-xl overflow-hidden aspect-video">
+                        <img src="https://i.ibb.co/GQ2r6Rw4/Whats-App-Image-2026-02-13-at-10-08-52.jpg" alt="Dashboard 1" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 to-transparent p-6">
+                            <span class="text-white font-bold text-lg">Dashboard de Performance</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide min-w-full flex-shrink-0 relative rounded-xl overflow-hidden aspect-video">
+                        <img src="https://i.ibb.co/KzcLk2fH/Whats-App-Image-2026-02-13-at-11-29-41.jpg" alt="Dashboard 2" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 to-transparent p-6">
+                            <span class="text-white font-bold text-lg">Monitoramento de Obras</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide min-w-full flex-shrink-0 relative rounded-xl overflow-hidden aspect-video">
+                        <img src="https://i.ibb.co/N2X2d5N3/Whats-App-Image-2026-02-13-at-10-10-34.jpg" alt="Dashboard 3" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 to-transparent p-6">
+                            <span class="text-white font-bold text-lg">Análise Financeira</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slide min-w-full flex-shrink-0 relative rounded-xl overflow-hidden aspect-video">
+                        <img src="https://i.ibb.co/sJM9dC9b/Whats-App-Image-2026-02-13-at-11-31-28.jpg" alt="Dashboard 4" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 to-transparent p-6">
+                            <span class="text-white font-bold text-lg">Gestão de Recursos</span>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="slide min-w-full flex-shrink-0 relative rounded-xl overflow-hidden aspect-video">
+                        <img src="https://i.ibb.co/xS6JhRsy/Whats-App-Image-2026-02-13-at-12-05-12.jpg" alt="Dashboard 5" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/80 to-transparent p-6">
+                            <span class="text-white font-bold text-lg">Indicadores de Qualidade</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Botões de Navegação -->
+                <button onclick="scrollSlider(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white text-slate-800 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button onclick="scrollSlider(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg hover:bg-white text-slate-800 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Indicadores -->
+                <div class="flex justify-center gap-2 mt-4">
+                    <div class="w-2 h-2 rounded-full bg-blue-600"></div>
+                    <div class="w-2 h-2 rounded-full bg-slate-300"></div>
+                    <div class="w-2 h-2 rounded-full bg-slate-300"></div>
+                    <div class="w-2 h-2 rounded-full bg-slate-300"></div>
+                    <div class="w-2 h-2 rounded-full bg-slate-300"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contato -->
     <footer id="contato" class="bg-slate-900 text-white py-24">
         <div class="container mx-auto px-6 text-center">
@@ -418,6 +504,16 @@
 
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Lógica do Slider
+        function scrollSlider(direction) {
+            const slider = document.getElementById('slider');
+            const scrollAmount = slider.offsetWidth; // Rola a largura de um slide
+            slider.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
         // Traduções
         const i18n = {
             pt: {
@@ -425,6 +521,7 @@
                 nav_about: "Sobre",
                 nav_skills: "Habilidades",
                 nav_experience: "Experiência",
+                nav_deliveries: "Entregas",
                 nav_contact: "Contato",
                 hero_badge: "Engenharia Civil & Análise de Dados",
                 hero_title_start: "Transformando",
@@ -454,7 +551,7 @@
                 skill_storytelling: "Storytelling com Dados",
                 skill_english: "Inglês Intermediário",
                 exp_title: "Trajetória Profissional",
-                exp_date_cehab: "Maio 2025 - Presente",
+                exp_date_cehab: "Maio 2025 - Present",
                 exp_role_cehab: "Engenheiro Civil / Analista de Dados",
                 exp_desc_cehab: "Responsável pela análise de dados e monitoramento de performance de contratos e projetos da Saúde. Desenvolvimento de soluções de Business Intelligence para otimizar o controle de processos e orçamentos, garantindo eficiência e transparência na gestão pública.",
                 exp_date_arbitrium: "Julho 2021 - Maio 2025",
@@ -463,6 +560,8 @@
                 exp_date_bezerra: "Out 2017 - Nov 2019",
                 exp_role_bezerra: "Desenhista Técnico de Eng. Civil",
                 exp_desc_bezerra: "Elaboração de projetos arquitetônicos completos e gestão de escopo para manutenção de cronogramas. Liderança de estagiários e acompanhamento integral de processos licitatórios e legalização de obras junto aos órgãos competentes (SEURB, Celpe, Compesa).",
+                deliveries_title: "Galeria de Entregas",
+                deliveries_desc: "Confira alguns dos dashboards e relatórios desenvolvidos para otimização de gestão.",
                 footer_title: "Vamos Construir Algo Juntos?",
                 footer_desc: "Interessado em otimizar processos através de dados ou precisa de gestão técnica especializada?"
             },
@@ -471,6 +570,7 @@
                 nav_about: "About",
                 nav_skills: "Skills",
                 nav_experience: "Experience",
+                nav_deliveries: "Portfolio",
                 nav_contact: "Contact",
                 hero_badge: "Civil Engineering & Data Analysis",
                 hero_title_start: "Transforming",
@@ -509,6 +609,8 @@
                 exp_date_bezerra: "Oct 2017 - Nov 2019",
                 exp_role_bezerra: "Civil Eng. Technical Draftsman",
                 exp_desc_bezerra: "Drafting complete architectural projects and scope management to maintain schedules. Leading interns and fully monitoring bidding processes and construction legalization with competent bodies (SEURB, Celpe, Compesa).",
+                deliveries_title: "Delivery Portfolio",
+                deliveries_desc: "Check out some of the dashboards and reports developed for management optimization.",
                 footer_title: "Let's Build Something Together?",
                 footer_desc: "Interested in optimizing processes through data or need specialized technical management?"
             }
